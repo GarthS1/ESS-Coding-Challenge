@@ -1,18 +1,16 @@
 import static javax.swing.JOptionPane.*;
 
-
 Customer cust1 = new Customer();
 Plane p = new Plane();
+
 Table available_planes;
 PrintWriter output;
 int n = 0;
-
 PImage select_flight_screen;
 //PImage input_screen;
 PImage seat_map;
 PImage confim_screen;
-
-
+String [] destinations =  new String[12];
 
 void setup() 
 {
@@ -26,6 +24,9 @@ void setup()
     plane[i] = available_planes.getRow(i);
   }
   
+  //get all locations 
+  get_unique_destinations(destinations, plane);
+
   //loads images in setup to make the program faster 
   select_flight_screen = loadImage("book_flight.png");
   //input_screen = loadImage(" ");
@@ -51,7 +52,7 @@ void draw()
     if(mousePressed == true) 
     {
       check_location();
-      output.println(cust1.flying.location);
+      output.println(cust1.flying.desentation);
     }
   }
   
@@ -123,16 +124,43 @@ void check_location()
   int x = mouseX;
   int y = mouseY;
   
-   while(i < 30; i++) 
+  int i = 0;
+  /* while(i < 30; i++) 
    {
      if( x)
        if(y)
    }
    
-   cust1.flying.desentation = 
-   
+   //cust1.flying.desentation = 
+   */
 }
+ 
+ 
+void get_unique_destinations(String [] arr, TableRow [] planes)
+{
+
+  int i = 0;
+  int j = 0;
+  boolean check = true;
   
+  while(i < planes.length)
+  {
+    for(int a = 0; a < arr.length; a++)
+    {
+      if((planes[i].getString("destination")).equals(arr[a]))
+      {
+        check = false;
+      }
+    }
+    if(check)
+    {
+      arr[j] = planes[i].getString("destination");
+      j++;
+    }
+    i++;
+    check = true;
+  }
+}
   
   
     
