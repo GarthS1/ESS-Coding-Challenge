@@ -15,7 +15,7 @@ String [] destinations =  new String[12];
 void setup() 
 {
   available_planes = loadTable("departures.csv", "header");
-  TableRow [] plane = new TableRow [30];
+  TableRow [] plane = new TableRow [12];
   
   //Loads information of each available plane (e.x. plane type)
   //into an array with each array element corresponding to each available plane
@@ -30,7 +30,7 @@ void setup()
   //loads images in setup to make the program faster 
   select_flight_screen = loadImage("book_flight.png");
   //input_screen = loadImage(" ");
-  seat_map = loadImage("airplane");
+  seat_map = loadImage("airplane.png");
   
   //makes files for transiction and output log 
   output = createWriter("reciept");
@@ -46,16 +46,25 @@ void draw()
   if(cust1.next == 0)
   {
     image(select_flight_screen,0,0);
-    //draws screens
+    draw_destinations(destinations, 0);
     
     //checks for mouse input
     if(mousePressed == true) 
     {
-      check_location();
+      draw_destinations(destinations, 1);
       output.println(cust1.flying.desentation);
+      if(cust1.flying.desentation != " ")
+      {
+        cust1.next++;
+      }
     }
   }
   
+  if(cust1.next == 1)
+  {
+    image(select_flight_screen,0,0);
+  }
+  /*
   //display input area
   if(cust1.next == 1)
   {
@@ -117,24 +126,9 @@ void draw()
       exit();
     }
   }
+  */
 }
 
-void check_location()
-{
-  int x = mouseX;
-  int y = mouseY;
-  
-  int i = 0;
-  /* while(i < 30; i++) 
-   {
-     if( x)
-       if(y)
-   }
-   
-   //cust1.flying.desentation = 
-   */
-}
- 
  
 void get_unique_destinations(String [] arr, TableRow [] planes)
 {
@@ -161,7 +155,47 @@ void get_unique_destinations(String [] arr, TableRow [] planes)
     check = true;
   }
 }
-  
+
+
+void draw_destinations(String [] destinations, int o) 
+{
+  int x = 100;
+  int y = 100;
+  int counter = 0;
+  for(int i = 0; destinations[i] != null; i++)
+  {
+    if( o == 1 && x < mouseX && mouseX < x + 100 &&  y < mouseY && mouseY < y + 100)
+    {
+      cust1.flying.desentation = destinations[i];
+    }
+    
+    fill(255);
+    rect(y,x,100,100);
+    fill(0);
+    text(destinations[i],y+50,x+50);
+    
+    if(y == 700)
+    {
+      y = 100;
+    }
+    else
+    {
+      y += 200;
+    }
+    
+    if(counter == 3)
+    {
+      counter = 0;
+      x += 200;
+    }
+    else
+    {
+      counter++;
+    }
+  }     
+}
+ 
+
   
     
  
