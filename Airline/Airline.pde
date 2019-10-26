@@ -53,6 +53,8 @@ void draw()
     {
       draw_destinations(destinations, 1);
       output.println(cust1.flying.desentation);
+       println(cust1.flying.desentation);
+
       if(cust1.flying.desentation != " ")
       {
         cust1.next++;
@@ -63,6 +65,7 @@ void draw()
   if(cust1.next == 1)
   {
     image(select_flight_screen,0,0);
+    //draw_times(
   }
   /*
   //display input area
@@ -164,7 +167,7 @@ void draw_destinations(String [] destinations, int o)
   int counter = 0;
   for(int i = 0; destinations[i] != null; i++)
   {
-    if( o == 1 && x < mouseX && mouseX < x + 100 &&  y < mouseY && mouseY < y + 100)
+    if( o == 1 && y < mouseX && mouseX < y + 100 &&  x < mouseY && mouseY < x + 100)
     {
       cust1.flying.desentation = destinations[i];
     }
