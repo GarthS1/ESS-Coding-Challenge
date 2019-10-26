@@ -1,3 +1,4 @@
+import java.util.*;
 Table available_planes;
 
 void setup()
@@ -18,9 +19,18 @@ void setup()
   String [] destinations = new String [12];
   get_unique_destinations(destinations, plane);
   
-  for(int i = 0; (i < destinations.length) && (destinations[i] != null); i++)
+  //for(int i = 0; (i < destinations.length) && (destinations[i] != null); i++)
+  //{
+    //println(destinations[i]);
+  //}
+  
+  String input = "YYC";
+  Date [] available_times = new Date [12];
+  get_available_times(available_times, plane, input);
+  
+  for(int i = 0; (i < available_times.length) && (available_times[i] != null); i++)
   {
-    println(destinations[i]);
+    println(available_times[i]);
   }
   
 }
@@ -48,5 +58,18 @@ void get_unique_destinations(String [] arr, TableRow [] planes)
     }
     i++;
     check = true;
+  }
+}
+
+void get_available_times(Date [] date, TableRow [] planes, String dest)
+{
+  int j = 0;
+  for(int i = 0; i < planes.length; i++)
+  {
+    if((planes[i].getString("destination")).equals(dest))
+    {
+      date[j] = new Date(planes[i].getInt("time")*1000);
+      j++;
+    }
   }
 }
