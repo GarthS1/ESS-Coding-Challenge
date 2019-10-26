@@ -9,8 +9,7 @@ int n = 0;
 
 PImage select_flight_screen;
 //PImage input_screen;
-PImage seat_map1;
-PImage seat_map2;
+PImage seat_map;
 PImage confim_screen;
 
 
@@ -30,8 +29,7 @@ void setup()
   //loads images in setup to make the program faster 
   select_flight_screen = loadImage("book_flight.png");
   //input_screen = loadImage(" ");
-  seat_map1 = loadImage(" ");
-  seat_map2 = loadImage(" ");
+  seat_map = loadImage("airplane");
   
   //makes files for transiction and output log 
   output = createWriter("reciept");
@@ -101,11 +99,11 @@ void draw()
   {
     if(cust1.flying.name == "BigLad9000")
     {
-      image(seat_map2,0,0);
+      
     }
     else 
     {
-      image(seat_map1,0,0);
+      
     }
   }
   
