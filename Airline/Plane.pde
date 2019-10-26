@@ -6,6 +6,7 @@ class Plane
   int rows;
   int columns;
   String desentation;
+  Date date;
   
   Plane()
   {
@@ -15,6 +16,7 @@ class Plane
     rows = 0;
     columns = 0;
     desentation = " ";
+    date = new Date();
   }
   
 }
