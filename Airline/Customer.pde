@@ -8,6 +8,8 @@ class Customer
   int date;
   boolean confirmed;
   int vessel_number;
+  int next; // tracks when customer wants to move to next screen
+  Plane flying;
   
   Customer()
   {
@@ -16,8 +18,15 @@ class Customer
     email = " ";
     dest = " ";
     date = 0;
-    boolean = false;
+    confirmed = false;
     vessel_number = 0; 
+    next = 0;
+    flying = new Plane();
+  }
+  
+  void check_location()
+  {
+    
   }
   
 }

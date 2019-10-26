@@ -2,17 +2,19 @@ class Plane
 {
   String name;
   int vessel_number;
-  int [][] seats;
+  Seat [][] seats;
   int rows;
   int columns;
+  String plane_image;
   
   Plane()
   {
     name = " ";
     vessel_number = 0;
-    seats = new int [40][40];
+    seats = new Seat [40][40];
     rows = 0;
     columns = 0;
+    plane_image = " ";
   }
   
 }
