@@ -1,12 +1,19 @@
+import static javax.swing.JOptionPane.*;
+
+
 Customer cust1 = new Customer();
 Plane p = new Plane();
 Table available_planes;
+PrintWriter output;
+int n = 0;
 
 PImage select_flight_screen;
-PImage input_screen;
+//PImage input_screen;
 PImage seat_map1;
 PImage seat_map2;
 PImage confim_screen;
+
+
 
 void setup() 
 {
@@ -21,14 +28,18 @@ void setup()
   }
   
   //loads images in setup to make the program faster 
-  select_flight_screen = loadImage("  ");
-  input_screen = loadImage(" ");
+  select_flight_screen = loadImage("book_flight.png");
+  //input_screen = loadImage(" ");
   seat_map1 = loadImage(" ");
   seat_map2 = loadImage(" ");
+  
+  //makes files for transiction and output log 
+  output = createWriter("reciept");
   
   frameRate(60);
   fullScreen();
 }
+
 
 void draw() 
 {
@@ -36,18 +47,54 @@ void draw()
   if(cust1.next == 0)
   {
     image(select_flight_screen,0,0);
+    //draws screens
+    
     //checks for mouse input
     if(mousePressed == true) 
     {
-      cust1.check_location();
+      check_location();
+      output.println(cust1.flying.location);
     }
   }
   
   //display input area
   if(cust1.next == 1)
   {
-    image(input_screen,0,0);
+    //image(input_screen,0,0);
+    
+    while(n == 0)
+    {
+      cust1.name = showInputDialog("Please enter your first and last name");
+      if(cust1.name == null) 
+      {
+        showMessageDialog(null, "Input not allowed please try again.", "alert", ERROR_MESSAGE);
+      }
+      else
+      {
+        n++;
+      }
+    }
+  
+    
+    while(n == 1)
+    {
+      cust1.email = showInputDialog("Please enter your email adress");
+      if(cust1.email == null) 
+      {
+        showMessageDialog(null, "Input not allowed please try again.", "alert", ERROR_MESSAGE);
+      }
+      else
+      {
+        n++;
+      }
+    }
   }
+    
+    while(n == 2)
+    {
+      //print_calender();
+    }    
+
   
   //display seat picking options
   if(cust1.next == 2)
@@ -68,13 +115,26 @@ void draw()
     image(confim_screen,0,0);
     if(cust1.confirmed)
     {
-      //FileOutputStream file = createOutput(cust1.name + "reciept");
-      //output.println(" ");
       exit();
     }
   }
 }
 
+void check_location()
+{
+  int x = mouseX;
+  int y = mouseY;
+  
+   while(i < 30; i++) 
+   {
+     if( x)
+       if(y)
+   }
+   
+   cust1.flying.desentation = 
+   
+}
+  
   
   
     

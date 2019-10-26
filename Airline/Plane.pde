@@ -5,7 +5,7 @@ class Plane
   Seat [][] seats;
   int rows;
   int columns;
-  String plane_image;
+  String desentation;
   
   Plane()
   {
@@ -14,7 +14,7 @@ class Plane
     seats = new Seat [40][40];
     rows = 0;
     columns = 0;
-    plane_image = " ";
+    desentation = " ";
   }
   
 }

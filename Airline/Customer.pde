@@ -19,11 +19,6 @@ class Customer
     next = 0;
     flying = new Plane();
   }
-  
-  void check_location()
-  {
-    
-  }
-  
+   
 }
     
